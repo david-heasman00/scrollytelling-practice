@@ -60,8 +60,8 @@
 			position: -webkit-sticky;
 			position: sticky;
 			left: 0;
-			width: 100%;
-			margin: 0;
+			max-width: 1000px;
+			margin: 0 auto;
 			-webkit-transform: translate3d(0, 0, 0);
 			-moz-transform: translate3d(0, 0, 0);
 			transform: translate3d(0, 0, 0);
@@ -93,6 +93,15 @@
 
 		.step:last-child {
 			margin-bottom: 0;
+		}
+
+		.last-step {
+			background-color: none;
+		}
+
+		.step.is-active p {
+			color: #fff;
+			background-color: rgba(0, 0, 0, 0.5);
 		}
 
 		.step p {
@@ -144,6 +153,11 @@
 				</div>
 				<div class="step" data-step="4">
 					<p>London, of course, can't be painted with one brush. Inner London is far less affordable than Outer London. However that is still far pricier than anywhere in the nation.</p>
+				</div>
+				<div class ="last-step">
+					<div class="step" data-step="5">
+						<p></p>
+					</div>
 				</div>
 			</article>
 
@@ -213,8 +227,8 @@
 			scroller
 				.setup({
 					step: "#scrolly article .step",
-					offset: 0.33,
-					debug: false
+					offset: 0.75,
+					debug: true
 				})
 				.onStepEnter(handleStepEnter);
 		}
