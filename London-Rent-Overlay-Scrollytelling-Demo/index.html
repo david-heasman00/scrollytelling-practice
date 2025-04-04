@@ -125,7 +125,7 @@
 			<div class="intro__dek">
 			<p>	Welcome to my scrollytelling data story demo!</p>
 			<p>After discovering that the wonderful <a href="https://sitiaish.github.io/">Aishah Azmansah</a> had created a tutorial and template for using Flourish with scollama, I thought to demo it with one of the data visuals I used for my London Affordability Story.</p>
-			<p>This is my version 2 of this, doing it side by side. I updated the code to use the latest scrollama guidelines.</p>
+			<p>This is a version where the "side text" overlays over the chart, instead of being to the left.</p>
             <p>Below you'll find the original Flourish slideshow adapted so you can scroll down.</p>
             <p>(At the moment its semi responsive for mobile – the text on the left doesn't scale down in size, so if you're on your phone. You've been warned.)</p>
             <p>Next steps. Create a version where the text comes down the centre of the chart. Then I'll figure out how to put this into wordpress, and for it to behave responsibly.</p>
@@ -154,16 +154,35 @@
 				<div class="step" data-step="4">
 					<p>London, of course, can't be painted with one brush. Inner London is far less affordable than Outer London. However that is still far pricier than anywhere in the nation.</p>
 				</div>
-				<div class ="last-step">
-					<div class="step" data-step="5">
-						<p></p>
-					</div>
-				</div>
 			</article>
-
 		</section>
 
-		<section id="outro"></section>
+
+		<section id="outro">
+			<div class="intro__dek">
+			<p>
+				There you have it. An amazing scrollytelling story.
+			</p>
+			<p>
+				I'll give an update once this is done. 
+			</p>
+			<p>
+				(Oh, and this is just some boilerplate text I'm adding to the bottom so that I can test the "outro" of the scrollytelling.)
+			</p>
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+			</p>
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+			</p>
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+			</p>
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+			</p>
+			</div>
+		</section>
 	</main>
 
 	<!--Scripts Section-->
@@ -184,7 +203,7 @@
 		// generic window resize listener event
 		function handleResize() {
 			// 1. update height of step elements
-			var stepH = Math.floor(window.innerHeight * 0.75);
+			var stepH = Math.floor(window.innerHeight * 1.2);
 			step.style("height", stepH + "px");
 
 			var figureHeight = window.innerHeight * 0.75;
@@ -228,7 +247,7 @@
 				.setup({
 					step: "#scrolly article .step",
 					offset: 0.75,
-					debug: true
+					debug: false
 				})
 				.onStepEnter(handleStepEnter);
 		}
