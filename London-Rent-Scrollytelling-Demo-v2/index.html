@@ -7,7 +7,7 @@
 	<title>Scrollama: Sticky Side Example</title>
 	<meta name="description" content="Scrollama: Sticky Side Example" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	<link rel="stylesheet" href="../style.css" />
+	<link rel="stylesheet" href="style.css" />
 	<style>
 		#scrolly {
 			position: relative;
@@ -40,6 +40,11 @@
 			transform: translate3d(0, 0, 0);
 			background-color: #8a8a8a;
 			z-index: 0;
+		}
+
+		figure iframe {
+			width: 100%;
+			height: 100%;
 		}
 
 		figure p {
@@ -91,7 +96,7 @@
 		<section id="scrolly">
 			<article>
 				<div class="step" data-step="1">
-					<p>SRent in England has risen steadily from an average of £575 to £800 a month between 2013 and 2023.</p>
+					<p>Rent in England has risen steadily from an average of £575 to £800 a month between 2013 and 2023.</p>
 				</div>
 				<div class="step" data-step="2">
 					<p>No region is born equal in England. Breaking down by region, we can see that England's rent (the dashed line) forms a nice trend line for the regions...</p>
@@ -132,7 +137,7 @@
 			var stepH = Math.floor(window.innerHeight * 0.75);
 			step.style("height", stepH + "px");
 
-			var figureHeight = window.innerHeight / 2;
+			var figureHeight = window.innerHeight * 0.75;
 			var figureMarginTop = (window.innerHeight - figureHeight) / 2;
 
 			figure
@@ -154,7 +159,11 @@
 			});
 
 			// update graphic based on step
-			figure.select("p").text(response.index + 1);
+			const linkHead = 'https://flo.uri.sh/story/3018482/embed#slide-'
+        	const slide = response.index
+
+        	d3.select('figure iframe')
+          	  .attr('src', linkHead + slide);
 		}
 
 		function init() {
@@ -169,7 +178,7 @@
 				.setup({
 					step: "#scrolly article .step",
 					offset: 0.33,
-					debug: false
+					debug: true
 				})
 				.onStepEnter(handleStepEnter);
 		}
