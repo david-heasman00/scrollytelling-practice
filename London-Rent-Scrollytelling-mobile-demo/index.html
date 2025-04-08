@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<title>London Rent Story Scrollytelling Flourish Demo v2</title>
+	<meta name="description" content="Scrollama: Sticky Side Example" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Fonts -->
+  	<link rel="preconnect" href="https://fonts.googleapis.com">
+  	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  	<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+
+	<style>
+
+		/* CSS for body and text */
+		body {
+      		font-family: 'Lora', serif;
+      		line-height: 1.4;
+      		font-weight: 400;
+      		color: #272626;
+    		}
+
+		.intro__hed {
+      		font-size: 36px;
+      		line-height: 52px;
+      		font-weight: 500;
+      		font-family: 'Source Sans 3', sans-serif;
+			text-align: center;
+
+      		@media (min-width: 768px) {
+        		font-size: 32px;
+        		line-height: 48px;
+      		}
+    	}
+
+		.intro__dek {
+			font-size: 18px;
+			font-weight: 400;
+			line-height: 32px;
+			width: 700px;
+			margin: 0 auto;
+		}
+
+		/* CSS for scrollytelling */
+		#scrolly {
+			position: relative;
+			display: -webkit-box;
+			display: -ms-flexbox;
+			display: flex;
+			padding: 1rem;
+		}
+
+		#scrolly>* {
+			-webkit-box-flex: 1;
+			-ms-flex: 1;
+			flex: 1;
+		}
+
+		article {
+			position: relative;
+			padding: 0 1rem;
+			max-width: 20rem;
+		}
+
+		figure {
+			position: -webkit-sticky;
+			position: sticky;
+			width: 100%;
+			margin: 0;
+			-webkit-transform: translate3d(0, 0, 0);
+			-moz-transform: translate3d(0, 0, 0);
+			transform: translate3d(0, 0, 0);
+			z-index: 0;
+		}
+
+		figure iframe {
+			width: 100%;
+			height: 100%;
+		}
+
+		figure p {
+			text-align: center;
+			padding: 1rem;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			-moz-transform: translate(-50%, -50%);
+			-webkit-transform: translate(-50%, -50%);
+			transform: translate(-50%, -50%);
+			font-size: 8rem;
+			font-weight: 900;
+			color: #fff;
+		}
+
+		.step {
+			margin: 0 auto 2rem auto;
+		}
+
+		.step:last-child {
+			margin-bottom: 0;
+		}
+
+		.step p {
+			text-align: center;
+			padding: 1rem;
+			font-size: 1.5rem;
+		}
+
+		iframe {
+           border: none;
+        }
+	</style>
+</head>
+
+<!--Body Section-->
+<body>
+	<main>
+		<!--Introduction-->
+		<section id="intro">
+			<h1 class="intro__hed">London Rent Flourish Scrollytelling Demo v2</h1>
+			<div class="intro__dek">
+			<p>	Welcome to my scrollytelling data story demo!</p>
+			<p>After discovering that the wonderful <a href="https://sitiaish.github.io/">Aishah Azmansah</a> had created a tutorial and template for using Flourish with scollama, I thought to demo it with one of the data visuals I used for my London Affordability Story.</p>
+			<p>This is my version 2 of this, doing it side by side. I updated the code to use the latest scrollama guidelines.</p>
+            <p>Below you'll find the original Flourish slideshow adapted so you can scroll down.</p>
+            <p>(At the moment its semi responsive for mobile – the text on the left doesn't scale down in size, so if you're on your phone. You've been warned.)</p>
+            <p>Next steps. Create a version where the text comes down the centre of the chart. Then I'll figure out how to put this into wordpress, and for it to behave responsibly.</p>
+		    </div>
+		</section>
+
+		<!-- Scrollytelling Body Section-->
+		<section id="scrolly">
+			<!--"Article"/Steps section of Scrollytelling-->
+			<article>
+				<div class="step" data-step="1">
+					<p>Rent in England has risen steadily from an average of £575 to £800 a month between 2013 and 2023.</p>
+				</div>
+				<div class="step" data-step="2">
+					<p>No region is born equal in England. Breaking down by region, we can see that England's rent (the dashed line) forms a nice trend line for the regions...</p>
+				</div>
+				<div class="step" data-step="3">
+					<p>Except when we add London. London's rental prices far outstrips anywhere else in the nation. Not news to anybody, but the difference in scale might be.</p>
+				</div>
+				<div class="step" data-step="4">
+					<p>London, of course, can't be painted with one brush. Inner London is far less affordable than Outer London. However that is still far pricier than anywhere in the nation.</p>
+				</div>
+			</article>
+			<!--"Figure"/Charts section of Scrollytelling-->
+			<figure>
+				<iframe scrolling="no" src="https://flo.uri.sh/story/3018482/embed#slide-0"></iframe>
+			</figure>
+		</section>
+
+		<section id="outro"></section>
+	</main>
+
+	<!--Scripts Section-->
+	<!-- <div class='debug'></div> -->
+	<script src="https://unpkg.com/d3@5.9.1/dist/d3.min.js"></script>
+	<script src="https://unpkg.com/scrollama"></script>
+	<script>
+		// using d3 for convenience
+		var main = d3.select("main");
+		var scrolly = main.select("#scrolly");
+		var figure = scrolly.select("figure");
+		var article = scrolly.select("article");
+		var step = article.selectAll(".step");
+
+		// initialize the scrollama
+		var scroller = scrollama();
+
+		// generic window resize listener event
+		function handleResize() {
+			// 1. update height of step elements
+			var stepH = Math.floor(window.innerHeight * 0.75);
+			step.style("height", stepH + "px");
+
+			var figureHeight = window.innerHeight * 0.75;
+			var figureMarginTop = (window.innerHeight - figureHeight) / 2;
+
+			figure
+				.style("height", figureHeight + "px")
+				.style("top", figureMarginTop + "px");
+
+			// 3. tell scrollama to update new element dimensions
+			scroller.resize();
+		}
+
+		// scrollama event handlers
+		function handleStepEnter(response) {
+			console.log(response);
+			// response = { element, direction, index }
+
+			// add color to current step only
+			step.classed("is-active", function (d, i) {
+				return i === response.index;
+			});
+
+			// update graphic based on step - adapted for Flourish
+			const linkHead = 'https://flo.uri.sh/story/3018482/embed#slide-'
+        	const slide = response.index
+
+        	d3.select('figure iframe')
+          	  .attr('src', linkHead + slide);
+		}
+
+		function init() {
+
+			// 1. force a resize on load to ensure proper dimensions are sent to scrollama
+			handleResize();
+
+			// 2. setup the scroller passing options
+			// 		this will also initialize trigger observations
+			// 3. bind scrollama event handlers (this can be chained like below)
+			scroller
+				.setup({
+					step: "#scrolly article .step",
+					offset: 0.33,
+					debug: false
+				})
+				.onStepEnter(handleStepEnter);
+		}
+
+		// kick things off
+		init();
+	</script>
+</body>
+
+</html>
