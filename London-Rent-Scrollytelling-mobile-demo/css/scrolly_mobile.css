@@ -1,29 +1,22 @@
 /* CSS for scrollytelling */
 #scrolly {
     position: relative;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
     padding: 1rem;
 }
 
-#scrolly>* {
-    -webkit-box-flex: 1;
-    -ms-flex: 1;
-    flex: 1;
-}
 
 article {
     position: relative;
     padding: 0 1rem;
     max-width: 20rem;
+    margin: 0 auto;
 }
 
 figure {
     position: -webkit-sticky;
     position: sticky;
     width: 100%;
-    margin: 0;
+    margin: 0 auto;
     -webkit-transform: translate3d(0, 0, 0);
     -moz-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0);
@@ -57,10 +50,19 @@ figure p {
     margin-bottom: 0;
 }
 
+.last-step {
+    background-color: none;
+}
+
+.step.is-active p {
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
 .step p {
     text-align: center;
     padding: 1rem;
-    font-size: 1.5rem;
+    font-size: 1rem;
 }
 
 iframe {
