@@ -11,12 +11,7 @@ body {
       line-height: 52px;
       font-weight: 500;
       font-family: 'Source Sans 3', sans-serif;
-    text-align: center;
-
-      @media (min-width: 768px) {
-        font-size: 32px;
-        line-height: 48px;
-      }
+      text-align: center;
 }
 
 .intro__dek {
@@ -24,5 +19,5 @@ body {
     font-weight: 400;
     line-height: 32px;
     width: 700px;
-    margin: 0 auto/;
+    margin: 0 auto;
 }
